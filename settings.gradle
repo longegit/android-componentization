@@ -1,0 +1,6 @@
+include ':app', ':modulea', ':moduleb'
+include ':componentization-annotation'
+include ':componentization-compiler'
+include ':componentization'
+include ':componentization-gradle-plugin'
+include  ':buildsrc'
