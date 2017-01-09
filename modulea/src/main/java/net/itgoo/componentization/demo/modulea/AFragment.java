@@ -14,7 +14,7 @@ import net.itgoo.componentization.annotation.CZFragment;
  * A simple {@link Fragment} subclass.
  */
 
-//@CZFragment(name = "modulea", titleName = "moduleATitle", iconName = "tab_a_selector")
+@CZFragment(name = "modulea", titleName = "moduleATitle", iconName = "tab_a_selector")
 public class AFragment extends Fragment {
 
 

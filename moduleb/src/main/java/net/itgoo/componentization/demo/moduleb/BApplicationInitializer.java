@@ -15,6 +15,6 @@ public class BApplicationInitializer implements CZApplicationInitializer {
     @Override
     public void init(Context context) {
         Log.v("application", "moduleb");
-        //CZFragmentHelper.register(new ModuleBFragmentInitializer());
+        CZFragmentHelper.register(new ModuleBFragmentInitializer());
     }
 }

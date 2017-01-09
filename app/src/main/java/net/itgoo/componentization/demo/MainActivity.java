@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
         for (String name : names) {
             CZFragmentEntity entity = CZFragmentHelper.getFragment(name);
-            int stringID = getResources().getIdentifier(entity.getTitleName(), "string", getPackageName());
-            int drawableID = getResources().getIdentifier(entity.getIconName(), "drawable", getPackageName());
+            int stringID = CZFragmentHelper.getTitleId(this, name);
+            int drawableID = CZFragmentHelper.getIconId(this, name);
 
             TabHost.TabSpec tabSpec = tabHost.newTabSpec(name).setIndicator(new TabBadgeView(this, name, drawableID, stringID));
             tabHost.addTab(tabSpec, entity.getFragment(), null);
