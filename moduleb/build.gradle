@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.neenbedankt.android-apt'
-apply plugin: componentization.plugin.ComponentizationPlugin
+//apply plugin: componentization.plugin.ComponentizationPlugin
 
 android {
     compileSdkVersion 25
