@@ -15,6 +15,6 @@ public class AApplicationInitializer implements CZApplicationInitializer {
     @Override
     public void init(Context context) {
         Log.v("application", "modulea");
-        CZFragmentHelper.register(new ModuleAFragmentInitializer());
+        //CZFragmentHelper.register(new ModuleAFragmentInitializer());
     }
 }
