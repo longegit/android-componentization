@@ -19,7 +19,7 @@ public class CZApplicationHelper {
 
     public static CZApplicationInitializer getApplicationCreator(String name) throws IllegalAccessException, InstantiationException {
         if (!sApplications.containsKey(name)) {
-            throw new NullPointerException(String.format("applicaiton creator %s is not exist", name));
+            throw new NullPointerException(String.format("application creator %s is not exist", name));
         }
         return sApplications.get(name).newInstance();
     }
