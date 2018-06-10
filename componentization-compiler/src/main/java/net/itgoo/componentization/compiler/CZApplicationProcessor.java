@@ -43,7 +43,7 @@ public class CZApplicationProcessor extends AbstractProcessor {
         Map<String, String> map = processingEnv.getOptions();
         Set<String> keys = map.keySet();
         for (String key : keys) {
-            if (key.contains("moduleName")) {
+            if (key.contains("targetModule")) {
                 targetModules.add(map.get(key));
             }
             System.out.println(key + " = " + map.get(key));

@@ -43,7 +43,7 @@ public class CZFragmentProcessor extends AbstractProcessor {
         Map<String, String> map = processingEnv.getOptions();
         Set<String> keys = map.keySet();
         for (String key : keys) {
-            if ("targetModuleName".equals(key)) {
+            if ("moduleName".equals(key)) {
                 this.targetModuleName = map.get(key);
             }
             System.out.println(key + " = " + map.get(key));
