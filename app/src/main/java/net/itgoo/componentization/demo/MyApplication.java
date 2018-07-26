@@ -20,4 +20,10 @@ public class MyApplication extends Application {
         CZApplicationHelper.register(new AppApplicationCreator());
         CZApplicationHelper.initApplications(this);
     }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        CZApplicationHelper.deInitApplications(this);
+    }
 }

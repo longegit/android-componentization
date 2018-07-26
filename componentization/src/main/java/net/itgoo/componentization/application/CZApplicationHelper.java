@@ -38,4 +38,19 @@ public class CZApplicationHelper {
             }
         }
     }
+
+    public static void deInitApplications(Context context) {
+        Iterator<Map.Entry<String, Class<? extends CZApplicationInitializer>>> it = sApplications.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<String, Class<? extends CZApplicationInitializer>> entry = (Map.Entry<String, Class<? extends CZApplicationInitializer>>) it.next();
+            try {
+                CZApplicationInitializer applicationInitializer = entry.getValue().newInstance();
+                applicationInitializer.deInit(context);
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

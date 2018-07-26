@@ -9,4 +9,6 @@ import android.content.Context;
 public interface CZApplicationInitializer {
 
     void init(Context context);
+
+    void deInit(Context context);
 }
