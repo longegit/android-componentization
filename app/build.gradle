@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion 25
@@ -10,7 +9,16 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true // lombok 编译报错的问题
+                arguments = [AROUTER_MODULE_NAME: 'App',
+                             targetModuleA : 'net.itgoo.componentization.demo.modulea.ModuleAApplicationInitializer',
+                             targetModuleB : 'net.itgoo.componentization.demo.moduleb.ModuleBApplicationInitializer',
+                ]
+            }
+        }
     }
     buildTypes {
         release {
@@ -21,22 +29,11 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    testCompile 'junit:junit:4.12'
-    compile project(':modulea')
-    compile project(':moduleb')
-    compile project(':componentization')
-    apt project(':componentization-compiler')
-    compile 'com.github.longegit:android-tabbadgeview:v1.0.2'
-}
-
-apt {
-    arguments {
-        targetModuleA "${android.defaultConfig.applicationId}.modulea.AApplicationInitializer"
-        targetModuleB "${android.defaultConfig.applicationId}.moduleb.BApplicationInitializer"
-    }
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:25.1.0'
+    implementation project(':modulea')
+    implementation project(':moduleb')
+    implementation project(':componentization')
+    annotationProcessor project(':componentization-compiler')
+    implementation 'com.github.longegit:android-tabbadgeview:v1.0.2'
 }

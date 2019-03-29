@@ -2,7 +2,6 @@ package net.itgoo.componentization.compiler;
 
 import com.google.auto.service.AutoService;
 import com.squareup.javapoet.ClassName;
-import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
@@ -43,8 +42,9 @@ public class CZFragmentProcessor extends AbstractProcessor {
         Map<String, String> map = processingEnv.getOptions();
         Set<String> keys = map.keySet();
         for (String key : keys) {
-            if ("moduleName".equals(key)) {
+            if ("AROUTER_MODULE_NAME".equals(key)) {
                 this.targetModuleName = map.get(key);
+                break;
             }
             System.out.println(key + " = " + map.get(key));
         }
@@ -62,16 +62,15 @@ public class CZFragmentProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        if (annotations.size() == 0) {
+        if (annotations.size() == 0 || targetModuleName.length() == 0) {
             return false;
         }
 
         Set<? extends Element> elements = roundEnv.getElementsAnnotatedWith(CZFragment.class);
         ClassName fragmentInitializer = ClassName.get("net.itgoo.componentization.fragment", "CZFragmentInitializer");
-        TypeSpec.Builder typeSpec = TypeSpec.classBuilder((targetModuleName.length() == 0 ? "Apt" : targetModuleName) + "FragmentInitializer")
+        TypeSpec.Builder typeSpec = TypeSpec.classBuilder(targetModuleName + "FragmentInitializer")
                 .addSuperinterface(fragmentInitializer)
-                .addModifiers(Modifier.PUBLIC)
-                .addStaticBlock(CodeBlock.of(String.format("CZFragmentHelper.register(new %sFragmentInitializer());", (targetModuleName.length() == 0 ? "Apt" : targetModuleName))));
+                .addModifiers(Modifier.PUBLIC);
 
         TypeElement fragmentInitializerTypeElement = elementUtils.getTypeElement(fragmentInitializer.toString());
         List<? extends Element> members = elementUtils.getAllMembers(fragmentInitializerTypeElement);

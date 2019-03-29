@@ -1,5 +1,6 @@
 package net.itgoo.componentization.application;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -8,5 +9,5 @@ import java.util.Map;
 
 public interface CZApplicationCreator {
 
-    void init(Map<String, Class<? extends CZApplicationInitializer>> applications);
+    void init(List<Class<? extends CZApplicationInitializer>> applications);
 }

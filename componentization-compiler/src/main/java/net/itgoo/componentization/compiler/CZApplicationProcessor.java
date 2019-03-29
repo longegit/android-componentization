@@ -90,8 +90,7 @@ public class CZApplicationProcessor extends AbstractProcessor {
 
             for (String module : targetModules) {
                 try {
-                    bindViewMethodSpecBuilder.addStatement("arg0.put($S, $T.class)",
-                            module.subSequence(module.lastIndexOf(".") + 1, module.length()), Class.forName(module));
+                    bindViewMethodSpecBuilder.addStatement("arg0.add($T.class)", Class.forName(module));
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }

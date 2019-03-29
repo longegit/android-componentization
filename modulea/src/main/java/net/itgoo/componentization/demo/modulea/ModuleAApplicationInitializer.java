@@ -11,10 +11,15 @@ import net.itgoo.componentization.fragment.ModuleAFragmentInitializer;
  * Created by apple on 17/1/6.
  */
 
-public class AApplicationInitializer implements CZApplicationInitializer {
+public class ModuleAApplicationInitializer implements CZApplicationInitializer {
     @Override
     public void init(Context context) {
         Log.v("application", "modulea");
         CZFragmentHelper.register(new ModuleAFragmentInitializer());
+    }
+
+    @Override
+    public void deInit(Context context) {
+
     }
 }

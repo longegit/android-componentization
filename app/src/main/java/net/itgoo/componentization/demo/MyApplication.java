@@ -10,7 +10,6 @@ import net.itgoo.componentization.application.CZApplicationHelper;
  * Created by apple on 17/1/9.
  */
 
-
 @CZApplication(name = "App")
 public class MyApplication extends Application {
     @Override
