@@ -22,4 +22,9 @@ public class ModuleBApplicationInitializer implements CZApplicationInitializer {
     public void deInit(Context context) {
 
     }
+
+    @Override
+    public void attach(Context base) {
+
+    }
 }

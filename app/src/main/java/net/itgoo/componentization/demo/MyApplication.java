@@ -1,6 +1,7 @@
 package net.itgoo.componentization.demo;
 
 import android.app.Application;
+import android.content.Context;
 
 import net.itgoo.componentization.annotation.CZApplication;
 import net.itgoo.componentization.application.AppApplicationCreator;
@@ -24,5 +25,11 @@ public class MyApplication extends Application {
     public void onTerminate() {
         super.onTerminate();
         CZApplicationHelper.deInitApplications(this);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        CZApplicationHelper.attachApplications(base);
     }
 }

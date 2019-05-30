@@ -11,4 +11,6 @@ public interface CZApplicationInitializer {
     void init(Context context);
 
     void deInit(Context context);
+
+    void attach(Context base);
 }

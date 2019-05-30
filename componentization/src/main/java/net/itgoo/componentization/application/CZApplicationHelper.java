@@ -38,4 +38,10 @@ public class CZApplicationHelper {
             applicationInitializer.deInit(context);
         }
     }
+
+    public static void attachApplications(Context context) {
+        for (CZApplicationInitializer applicationInitializer : sApplications) {
+            applicationInitializer.attach(context);
+        }
+    }
 }
