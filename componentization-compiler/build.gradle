@@ -6,9 +6,9 @@ targetCompatibility = 1.8
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     annotationProcessor 'com.google.auto.service:auto-service:1.0-rc7'
-    compileOnly 'com.google.auto.service:auto-service-annotations:1.0-rc7'
-    implementation 'com.squareup:javapoet:1.8.0'
-    implementation project(':componentization-annotation')
+    compile 'com.google.auto.service:auto-service-annotations:1.0-rc7'
+    compile 'com.squareup:javapoet:1.8.0'
+    compile project(':componentization-annotation')
 }
 
 group='com.github.longegit'
