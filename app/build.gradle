@@ -12,11 +12,7 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                includeCompileClasspath true // lombok 编译报错的问题
-                arguments = [AROUTER_MODULE_NAME: 'App',
-                             targetModuleA : 'net.itgoo.componentization.demo.modulea.ModuleAApplicationInitializer',
-                             targetModuleB : 'net.itgoo.componentization.demo.moduleb.ModuleBApplicationInitializer',
-                ]
+                includeCompileClasspath true
             }
         }
     }

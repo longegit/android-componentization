@@ -24,6 +24,7 @@ import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
+import javax.tools.Diagnostic;
 
 /**
  * Created by apple on 17/1/3.
@@ -42,11 +43,11 @@ public class CZFragmentProcessor extends AbstractProcessor {
         Map<String, String> map = processingEnv.getOptions();
         Set<String> keys = map.keySet();
         for (String key : keys) {
-            if ("AROUTER_MODULE_NAME".equals(key)) {
+            if ("AC_MODULE_NAME".equals(key)) {
                 this.targetModuleName = map.get(key);
+                processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE, "cz fragment:" + key + " = " + map.get(key));
                 break;
             }
-            System.out.println(key + " = " + map.get(key));
         }
     }
 
@@ -57,7 +58,7 @@ public class CZFragmentProcessor extends AbstractProcessor {
 
     @Override
     public SourceVersion getSupportedSourceVersion() {
-        return SourceVersion.RELEASE_7;
+        return SourceVersion.latestSupported();
     }
 
     @Override
@@ -89,7 +90,7 @@ public class CZFragmentProcessor extends AbstractProcessor {
         for (Element element : elements) {
             CZFragment componentizationFragment = element.getAnnotation(CZFragment.class);
             TypeElement typeElement = (TypeElement) element;
-            bindViewMethodSpecBuilder.addStatement("arg0.put($S, new CZFragmentEntity($S, $S, $S, $T.class))",
+            bindViewMethodSpecBuilder.addStatement("fragments.put($S, new CZFragmentEntity($S, $S, $S, $T.class))",
                     componentizationFragment.name(), componentizationFragment.name(), componentizationFragment.titleName(), componentizationFragment.iconName(), typeElement.asType());
         }
 

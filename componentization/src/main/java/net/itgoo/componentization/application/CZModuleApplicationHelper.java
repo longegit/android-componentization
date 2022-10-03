@@ -9,7 +9,7 @@ import java.util.List;
  * Created by apple on 17/1/3.
  */
 
-public class CZApplicationHelper {
+public class CZModuleApplicationHelper {
 
     private static List<CZModuleApplicationInitializer> sApplications = new ArrayList<>();
 

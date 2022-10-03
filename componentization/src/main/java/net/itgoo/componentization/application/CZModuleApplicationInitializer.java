@@ -6,7 +6,7 @@ import android.content.Context;
  * Created by apple on 17/1/6.
  */
 
-public interface CZApplicationInitializer {
+public interface CZModuleApplicationInitializer {
 
     void init(Context context);
 

@@ -12,7 +12,7 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: 'ModuleA']
+                arguments = [AC_MODULE_NAME: 'ModuleA']
             }
         }
 

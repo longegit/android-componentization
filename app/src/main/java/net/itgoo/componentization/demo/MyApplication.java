@@ -3,33 +3,33 @@ package net.itgoo.componentization.demo;
 import android.app.Application;
 import android.content.Context;
 
-import net.itgoo.componentization.annotation.CZApplication;
-import net.itgoo.componentization.application.AppApplicationCreator;
-import net.itgoo.componentization.application.CZApplicationHelper;
+import net.itgoo.componentization.application.CZModuleApplicationHelper;
+import net.itgoo.componentization.demo.modulea.ModuleAApplicationInitializer;
+import net.itgoo.componentization.demo.moduleb.ModuleBApplicationInitializer;
 
 /**
  * Created by apple on 17/1/9.
  */
 
-@CZApplication(name = "App")
 public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
 
-        CZApplicationHelper.register(new AppApplicationCreator());
-        CZApplicationHelper.initApplications(this);
+        CZModuleApplicationHelper.register(new ModuleAApplicationInitializer());
+        CZModuleApplicationHelper.register(new ModuleBApplicationInitializer());
+        CZModuleApplicationHelper.initApplications(this);
     }
 
     @Override
     public void onTerminate() {
         super.onTerminate();
-        CZApplicationHelper.deInitApplications(this);
+        CZModuleApplicationHelper.deInitApplications(this);
     }
 
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-        CZApplicationHelper.attachApplications(base);
+        CZModuleApplicationHelper.attachApplications(base);
     }
 }
